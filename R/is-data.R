@@ -8,6 +8,8 @@
 #' stats package functions, except that the position of the failing
 #' values does not change.
 #' @param .xname Not intended to be called directly.
+#' @param severity How severe should the consequences of the assertion be?  
+#' Either \code{"stop"}, \code{"warning"}, \code{"message"}, or \code{"none"}.
 #' @note CAS numbers take the form of 1 to 7 digits followed by a hyphen,  
 #' followed by 2 digits, another hyphen and a final check digit.
 #' @return A logical vector that is \code{TRUE} when the input contains valid  
@@ -72,6 +74,8 @@ is_cas_number <- function(x, .xname = get_name_in_parent(x))
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
 #' values does not change.
+#' @param severity How severe should the consequences of the assertion be?  
+#' Either \code{"stop"}, \code{"warning"}, \code{"message"}, or \code{"none"}.
 #' @note Legacy card numbers, for example 13 digit Visa numbers and 15 digits 
 #' JCB numbers are not supported.
 #' @return A logical vector that is \code{TRUE} when the input contains valid 
@@ -173,6 +177,8 @@ is_credit_card_number <- function(x,
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
 #' values does not change.
+#' @param severity How severe should the consequences of the assertion be?  
+#' Either \code{"stop"}, \code{"warning"}, \code{"message"}, or \code{"none"}.
 #' @note Each method specifies a regular expression (see 
 #' \code{\link[base]{regex}}) to match against. The \code{simple} method matches 
 #' most email addresses in use, and is quite good at filtering out typos and 
@@ -222,6 +228,8 @@ is_email_address <- function(x, method = c("simple", "rfc5322"),
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
 #' values does not change.
+#' @param severity How severe should the consequences of the assertion be?  
+#' Either \code{"stop"}, \code{"warning"}, \code{"message"}, or \code{"none"}.
 #' @note A string is considered to represent a hexadecimal colour when contains 
 #' a hash followed by six hex values.  That is, digits or the letters from a to 
 #' f (case insensitive).
@@ -260,6 +268,8 @@ is_hex_colour <- is_hex_color
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
 #' values does not change.
+#' @param severity How severe should the consequences of the assertion be?  
+#' Either \code{"stop"}, \code{"warning"}, \code{"message"}, or \code{"none"}.
 #' @return \code{is_honorific} returns \code{TRUE} if the input string contains
 #' a valid UK postcode. The {assert_*} function returns nothing but throws an 
 #' error when the \code{is_*} function returns \code{FALSE}. 
@@ -319,6 +329,8 @@ is_honorific <- function(x)
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
 #' values does not change.
+#' @param severity How severe should the consequences of the assertion be?  
+#' Either \code{"stop"}, \code{"warning"}, \code{"message"}, or \code{"none"}.
 #' @note Valid IP addresses are considered to be four integers in the range 0 to 
 #' 255, separated by dots, or the string "localhost".
 #' @return A logical vector that is \code{TRUE} when the input contains valid IP 
@@ -456,6 +468,8 @@ is_isbn13_code <- function(x, .xname = get_name_in_parent(x))
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
 #' values does not change.
+#' @param severity How severe should the consequences of the assertion be?  
+#' Either \code{"stop"}, \code{"warning"}, \code{"message"}, or \code{"none"}.
 #' @param type Either "isbn10", "isbn13" or both (for matching either type).
 #' @param .xname Not intended to be called directly.
 #' @return  A logical vector that is \code{TRUE} when the input contains valid 
