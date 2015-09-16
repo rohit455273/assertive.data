@@ -205,11 +205,10 @@ is_credit_card_number <- function(x,
 #' each.
 #' @importFrom assertive.base coerce_to
 #' @export
-is_email_address <- function(x, method = c("simple", "rfc5322"), 
-  .xname = get_name_in_parent(x))
+is_email_address <- function(x, method = c("simple", "rfc5322"))
 {
   method <- match.arg(method)
-  x <- coerce_to(x, "character")
+  x <- coerce_to(x, "character", .xname)
   rx <- switch(
     method,
     simple = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",
@@ -355,7 +354,7 @@ is_honorific <- function(x)
 #' @export
 is_ip_address <- function(x)
 {
-  x <- coerce_to(x, "character")  
+  x <- coerce_to(x, "character", get_name_in_parent(x))  
   rx <- assertive.strings:::create_regex(
     rep.int(assertive.strings:::d(1, 3), 4), 
     sep = "\\."
