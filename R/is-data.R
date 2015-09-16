@@ -7,7 +7,6 @@
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
 #' values does not change.
-#' @param .xname Not intended to be called directly.
 #' @param severity How severe should the consequences of the assertion be?  
 #' Either \code{"stop"}, \code{"warning"}, \code{"message"}, or \code{"none"}.
 #' @note CAS numbers take the form of 1 to 7 digits followed by a hyphen,  
@@ -33,8 +32,9 @@
 #' @importFrom assertive.base bapply
 #' @importFrom assertive.strings character_to_list_of_integer_vectors
 #' @export
-is_cas_number <- function(x, .xname = get_name_in_parent(x))
+is_cas_number <- function(x)
 {
+  x <- coerce_to(x, "character", get_name_in_parent(x))
   #Check format
   rx <- c(
     assertive.strings:::d(1, 7), 
@@ -69,7 +69,6 @@ is_cas_number <- function(x, .xname = get_name_in_parent(x))
 #' 
 #' @param x Input to check.
 #' @param type Type of credit card.  Multiple types can be selected.
-#' @param .xname Not intended to be called directly.
 #' @param na_ignore A logical value.  If \code{FALSE}, \code{NA} values
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
@@ -119,9 +118,9 @@ is_cas_number <- function(x, .xname = get_name_in_parent(x))
 #' @importFrom assertive.strings character_to_list_of_integer_vectors
 #' @export
 is_credit_card_number <- function(x, 
-  type = c("visa", "mastercard", "amex", "diners", "discover", "jcb"), 
-  .xname = get_name_in_parent(x))
+  type = c("visa", "mastercard", "amex", "diners", "discover", "jcb"))
 {
+  x <- coerce_to(x, "character", get_name_in_parent(x))
   #Check format
   type <- match.arg(type, several.ok = TRUE)
   d1 <- assertive.strings:::d(1)
@@ -172,7 +171,6 @@ is_credit_card_number <- function(x,
 #' 
 #' @param x Input to check.
 #' @param method Name of method to check for validity.  See notes below.
-#' @param .xname Not intended to be called directly.
 #' @param na_ignore A logical value.  If \code{FALSE}, \code{NA} values
 #' cause an error; otherwise they do not.  Like \code{na.rm} in many
 #' stats package functions, except that the position of the failing
@@ -208,7 +206,7 @@ is_credit_card_number <- function(x,
 is_email_address <- function(x, method = c("simple", "rfc5322"))
 {
   method <- match.arg(method)
-  x <- coerce_to(x, "character", .xname)
+  x <- coerce_to(x, "character", get_name_in_parent(x))
   rx <- switch(
     method,
     simple = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$",
@@ -249,6 +247,7 @@ is_email_address <- function(x, method = c("simple", "rfc5322"))
 #' @export
 is_hex_color <- function(x)
 {
+  x <- coerce_to(x, "character", get_name_in_parent(x))
   rx <- assertive.strings:::create_regex("#[0-9a-f]{6}")
   ok <- assertive.strings:::matches_regex(x, rx)
   set_cause(ok, "bad format")
@@ -287,6 +286,7 @@ is_hex_colour <- is_hex_color
 #' @export
 is_honorific <- function(x)
 {
+  x <- coerce_to(x, "character", get_name_in_parent(x))
   #Strip single dots after words
   x <- gsub("(?<=\\b)\\.(?=\\s|$)", "", x, perl = TRUE)  
   rx <- assertive.strings:::create_regex(
@@ -381,6 +381,7 @@ is_ip_address <- function(x)
 #' @export
 is_isbn10_code <- function(x, .xname = get_name_in_parent(x))
 {
+  x <- coerce_to(x, "character", .xname)
   #Check basic format
   rx <- assertive.strings:::create_regex(
     c(rep.int(assertive.strings:::d(1, Inf), 3), "[[:digit:]X]")
@@ -426,6 +427,7 @@ is_isbn10_code <- function(x, .xname = get_name_in_parent(x))
 #' @export
 is_isbn13_code <- function(x, .xname = get_name_in_parent(x))
 {
+  x <- coerce_to(x, "character", .xname)
   #Check basic format
   rx <- assertive.strings:::create_regex(
     c(rep.int(assertive.strings:::d(1, Inf), 4), "[[:digit:]X]")
@@ -502,10 +504,11 @@ is_isbn13_code <- function(x, .xname = get_name_in_parent(x))
 #' assertive.base::dont_stop(assert_all_are_isbn_codes(x10, type = "10"))
 #' assertive.base::dont_stop(assert_all_are_isbn_codes(x13, type = "13"))
 #' @export
-is_isbn_code <- function(x, type = c("10", "13"), 
-  .xname = get_name_in_parent(x))
+is_isbn_code <- function(x, type = c("10", "13"))
 {
   type <- match.arg(type, several.ok = TRUE)
+  .xname <- get_name_in_parent(x)
+  x <- coerce_to(x, "character", .xname)
   ok <- lapply(
     type, 
     function(isbn) 
