@@ -33,3 +33,4 @@ Collate:
     'imports.R'
     'assert-is-data.R'
     'is-data.R'
+RoxygenNote: 5.0.1
