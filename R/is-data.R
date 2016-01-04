@@ -135,7 +135,7 @@ is_credit_card_number <- function(x,
     mastercard = c(paste0("5[1-5]", d2), rep.int(d4, 3)),
     amex       = c(paste0("3[47]", d2), d6, d5),
     diners     = c("3(0[0-5]|[68][[:digit:]])[[:digit:]]", d6, d4),
-    discover   = c(paste("6011", paste0("65", d2), sep = "|"), rep.int(d4, 2)),
+    discover   = c(paste("6011", paste0("65", d2), sep = "|"), rep.int(d4, 3)),
     jcb        = c(paste0("35", d2), rep.int(d4, 3))
   )
   rx <- assertive.strings:::create_regex(l = rx[type], sep = " ?")
