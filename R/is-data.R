@@ -500,7 +500,7 @@ is_isbn13_code <- function(x, .xname = get_name_in_parent(x))
 #' assert_any_are_isbn_codes(x10, type = "10")
 #' is_isbn_code(x13, type = "13")
 #' assert_any_are_isbn_codes(x13, type = "13")
-#' #These tests should fail.
+#' # These checks should fail.
 #' assertive.base::dont_stop(assert_all_are_isbn_codes(x10, type = "10"))
 #' assertive.base::dont_stop(assert_all_are_isbn_codes(x13, type = "13"))
 #' @export
