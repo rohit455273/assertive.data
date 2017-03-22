@@ -2,6 +2,7 @@
 [![Is the package on CRAN?](http://www.r-pkg.org/badges/version/assertive.data)](http://www.r-pkg.org/pkg/assertive.data)
 [![SemaphoreCI Build Status](https://semaphoreci.com/api/v1/projects/c790aeb3-876f-4d03-a999-ff6732f76913/635090/badge.svg)](https://semaphoreci.com/richierocks/assertive-data)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/0ufex4u14q66nt25?svg=true)](https://ci.appveyor.com/project/richierocks/assertive-data)
+[![Research software impact](http://depsy.org/api/package/cran/assertive.data/badge.svg)](http://depsy.org/package/r/assertive.data)
 
 # assertive.data
 
