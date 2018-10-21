@@ -1,8 +1,8 @@
 Package: assertive.data
 Type: Package
 Title: Assertions to Check Properties of Data
-Version: 0.0-2
-Date: 2016-05-08
+Version: 0.0-3
+Date: 2018-10-21
 Author: Richard Cotton [aut, cre]
 Maintainer: Richard Cotton <richierocks@gmail.com>
 Authors@R: person("Richard", "Cotton", role = c("aut", "cre"), email =
@@ -32,4 +32,4 @@ Collate:
     'imports.R'
     'assert-is-data.R'
     'is-data.R'
-RoxygenNote: 5.0.1
+RoxygenNote: 6.1.0
